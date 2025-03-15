@@ -3,14 +3,23 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import WelcomePage from './components/Welcomepage'
+import Questionnaire from './components/Questionspage'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CareerResults from './components/Results'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-    <WelcomePage></WelcomePage>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<WelcomePage/>}></Route>
+        <Route path="/questions" element={<Questionnaire/>}></Route>
+        <Route path="/results" element={<CareerResults/>}></Route>
+      </Routes>
+  
+    </Router>
   )
 }
 
