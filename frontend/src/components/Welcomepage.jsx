@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import heroImage from './Photos/a.jpg'; 
 import img1 from './Photos/n.png'
-
+import { Link } from 'react-router-dom';
 import img3 from './Photos/c.jpg'
 import img4 from './Photos/d.jpg'
 
@@ -20,7 +20,7 @@ function WelcomePage() {
                         Your AI-powered guide to discovering and building your ideal career path.
                     </p>
                     <div className="mt-4">
-                        <button className="btn btn-success me-3 px-4">Get Started</button>
+                        <button className="btn btn-success me-3 px-4"><Link to="/questions" style={{textDecoration:"none",color:"white"}}>Get Started</Link></button>
                         <button className="btn btn-outline-light px-4">Learn More</button>
                     </div>
                 </div>

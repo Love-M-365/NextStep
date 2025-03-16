@@ -1,40 +1,42 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+import Navbar from './Navbar';
 
-const CareerResults = ({ analysis, careerOptions, timeline }) => {
+
+const Results = () => {
+  const { state } = useLocation();
+  const { careers } = state || { careers: [] };
+
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-lg-8 offset-lg-2">
-          <Card className="shadow-sm">
-            <Card.Body>
-              <h3 className="card-title">Career Guidance Results</h3>
-              <p className="card-text">{analysis}</p>
-
-              <h4 className="mt-4">Best Career Options for You</h4>
-              <ul>
-                {careerOptions.map((option, index) => (
-                  <li key={index}>
-                    <strong>{option.name}</strong>: {option.description}
-                  </li>
-                ))}
-              </ul>
-
-              <h4 className="mt-4">Suggested Timeline</h4>
-              <div className="timeline">
-                {timeline.map((step, index) => (
-                  <div key={index} className="timeline-item">
-                    <div className="timeline-date">{step.date}</div>
-                    <div className="timeline-content">{step.content}</div>
-                  </div>
-                ))}
-              </div>
-            </Card.Body>
-          </Card>
+    <>
+      <Navbar />
+      <div className="container mt-5">
+        <div className="card p-4 shadow-sm">
+          <div className="card-body">
+            <h3 className="card-title text-center">Career Recommendations</h3>
+            <div className="mt-4">
+              <h5>Your career suggestions based on your responses:</h5>
+              {careers.length > 0 ? (
+                <ul className="list-group">
+                  {careers.map((career, index) => (
+                    <li key={index} className="list-group-item d-flex align-items-center justify-content-between">
+                      <div className="career-item">
+                        <i className="bi bi-briefcase" style={{ fontSize: "20px", marginRight: "10px" }}></i>
+                        <strong>{career}</strong>
+                      </div>
+                      <button className="btn btn-link">Learn More</button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No career suggestions available.</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default CareerResults;
+export default Results;

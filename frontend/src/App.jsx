@@ -6,7 +6,7 @@ import WelcomePage from './components/Welcomepage'
 import Questionnaire from './components/Questionspage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CareerResults from './components/Results'
-
+import Results from './components/Results'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage/>}></Route>
         <Route path="/questions" element={<Questionnaire/>}></Route>
-        <Route path="/results" element={<CareerResults/>}></Route>
+        <Route path="/results" element={<CareerResults careers={""} />} />
       </Routes>
   
     </Router>
