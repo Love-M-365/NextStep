@@ -1,5 +1,6 @@
-// src/components/Navbar.jsx
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -8,6 +9,7 @@ const Navbar = () => {
         <a className="navbar-brand" href="/">
           <h5 style={{color:"whitesmoke"}}>NextStep</h5>
         </a>
+        <button className="btn btn-success"><Link to="/trends" style={{textDecoration:"none",color:"white"}}>Latest job trends</Link></button>
       </div>
     </nav>
   );

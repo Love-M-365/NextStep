@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import ToastMessage from './utils/ToastMessage';
-
+import { Link } from 'react-router-dom';
 const Questionnaire = () => {
   const [showToast, setShowToast] = useState(false);
   const [message, setMessage] = useState('');
@@ -150,17 +150,27 @@ const Questionnaire = () => {
       <Navbar />
       <ToastMessage message={message} show={showToast} />
       <div className="container mt-5">
-        <div className="card p-4 shadow-sm">
-          <div className="card-body">
-            {submitted ? (
-              <div className="mt-4">
-                <h4>Your Career Suggestions:</h4>
-                <ul>
-                  {careerOptions && careerOptions.map((career, index) => (
-                    <li key={index}>{career}</li>
-                  ))}
-                </ul>
+      <div className="card p-4 shadow-sm">
+  <div className="card-body">
+    {submitted ? (
+      <div className="mt-4">
+        <h4>Your Career Suggestions:</h4>
+        <div className="mt-3">
+          <div className="row">
+            {careerOptions && careerOptions.map((career, index) => (
+              <div key={index} className="col-md-4 mb-3">
+                <div className="card">
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{career}</h5>
+                    <p className="card-text">Explore opportunities in this field to take your career to the next level.</p>
+                    <a href="#" className="btn btn-primary"><Link to="/results" style={{textDecoration:"none",color:"white"}}>Learn More</Link></a>
+                  </div>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
             ) : (
               <>
                 <h3 className="card-title">{questions[currentQuestionIndex].question}</h3>
